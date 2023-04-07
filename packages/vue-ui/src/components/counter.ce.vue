@@ -6,8 +6,7 @@
 
 
 <script setup lang="ts">
-import type { ICounterProps } from '../interfaces/ICounterProps';
-interface Props extends ICounterProps {}
-
-defineProps<Props>()
+defineProps<{
+    counter: number;
+}>()
 </script>
