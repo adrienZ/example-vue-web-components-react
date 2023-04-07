@@ -1,12 +1,14 @@
 <template>
   <code>
-    {{  counter }}
+    {{  countValue }}
+
+    <slot name="bonus" />
   </code>
 </template>
 
 
 <script setup lang="ts">
 defineProps<{
-    counter: number;
+  countValue: number;
 }>()
 </script>

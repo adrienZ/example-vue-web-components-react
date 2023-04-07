@@ -4,21 +4,26 @@ import type { VuePropsType } from '@/utils/vue-prop-type'
 
 // components
 import Counter from './src/components/counter.ce.vue'
-
 // interfaces
 export type ICounterProps = VuePropsType<typeof Counter>
 
 // turn component into web components
-export const WebCounter = defineCustomElement(Counter) as VueElementConstructor<ICounterProps>
+export const WebCounter = defineCustomElement(Counter)
 
-import type React from 'react'
 type CustomEvents<K extends string> = { [key in K] : (event: CustomEvent) => void };
-type CustomElement<T, K extends string> = Partial<T & React.DOMAttributes<T> & { children: any } & CustomEvents<`on${K}`>>;
+type CustomElement<T, K extends string> = T & CustomEvents<`on${K}`>;
 
 declare global {
   namespace JSX {
     interface IntrinsicElements {
       ['web-counter']: CustomElement<ICounterProps, ''>;
     }
+  }
+}
+
+declare module 'vue' {
+  export interface GlobalComponents {
+    'web-counter': typeof Counter,
+    'WebCounter': typeof Counter,
   }
 }

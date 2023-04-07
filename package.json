@@ -12,8 +12,7 @@
     "lint": "turbo run lint",
     "build:ui": "cd packages/vue-ui && npm run build",
     "build:reactApp": "cd apps/react-app && npm i && npm run build",
-
-    "demo": "npm install && npm run build:ui && npm run build:reactApp",
+    "demo": "npm install && npm run build:ui && npm install && turbo run typecheck",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
