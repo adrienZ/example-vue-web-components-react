@@ -22,7 +22,10 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: Build
+    - name: Install deps
       run: |
         npm install
-        npm run demo
+
+    - name: typecheck
+      run: |
+        npx  turbo run typecheck --no-cache
